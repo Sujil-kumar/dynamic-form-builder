@@ -114,15 +114,13 @@ dynamic-form-builder/
 ---
 
 ## 🧪 Example Screenshots
-(Add images inside `public/screenshots/`)
 
-```md
-![User Dashboard](Screenshot/image1.png)
-![User Form Fill](Screenshot/image2.png)
-![Admin Dashboard](screenshot/image3.png)
-![Create Form](public/screenshots/create-form.png)
-![User Form](public/screenshots/user-form-submit.png)
-```
+![User Dashboard](public/screenshots/image1.png)
+![User Form Fill](public/screenshots/image2.png)
+![Admin Dashboard](public/screenshots/image3.png)
+![Create Form](public/screenshots/image4.png)
+![Form Create Success](public/screenshots/image5.png)
+![Form Responses](public/screenshots/image6.png)
 
 ---
 
