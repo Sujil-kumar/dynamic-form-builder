@@ -18,4 +18,11 @@ class Form extends Model
     public function responses() {
         return $this->hasMany(FormResponse::class);
     }
+    public function versions(){
+        return $this->hasMany(FormVersion::class);
+    }
+
+    public function activeVersion(){
+        return $this->hasOne(FormVersion::class)->where('is_active', true);
+    }
 }

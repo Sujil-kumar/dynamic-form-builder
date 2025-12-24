@@ -1,42 +1,48 @@
 @extends('layouts.app')
 
 @section('body')
-    <div class="container mt-5">
-        <h3 class="text-center fw-bold">{{$form->form_name}}</h3>
+<div class="container mt-5">
+    <h3 class="text-center fw-bold">{{ $form->form_name }}</h3>
 
-        <form action="{{route('user.formSubmit')}}" method="POST" class="row p-2 g-4 mt-4 rounded-3 bg-light">
+    @if($version && $version->fields->count())
+        <form action="{{ route('user.formSubmit') }}" method="POST"
+              class="row p-2 g-4 mt-4 rounded-3 bg-light">
+
             @csrf
-            <input type="hidden" name="form_id" value="{{$form->id}}">
-            @foreach ($form->fields as $field)
+            <input type="hidden" name="version_id" value="{{$version->id}}">
+            <input type="hidden" name="form_id" value="{{ $form->id }}">
+
+            @foreach ($version->fields as $field)
                 @switch($field->type)
                     @case('text')
                         <x-form.text :field="$field"/>
-                    @break
+                        @break
 
                     @case('textarea')
                         <x-form.textarea :field="$field"/>
-                    @break
+                        @break
 
                     @case('number')
                         <x-form.number :field="$field"/>
-                    @break
+                        @break
 
                     @case('dropdown')
                         <x-form.dropdown :field="$field"/>
-                    @break
+                        @break
 
                     @case('radio')
                         <x-form.radio :field="$field"/>
-                    @break
+                        @break
 
                     @case('checkbox')
                         <x-form.checkbox :field="$field"/>
-                    @break
+                        @break
                 @endswitch
             @endforeach
 
             <div class="col-12 text-center mt-4">
-                <a href="{{ url()->previous() }}" class="btn btn-outline-secondary px-5 rounded-pill me-2">
+                <a href="{{ url()->previous() }}"
+                   class="btn btn-outline-secondary px-5 rounded-pill me-2">
                     Back
                 </a>
 
@@ -46,5 +52,10 @@
             </div>
 
         </form>
-    </div>
+    @else
+        <div class="alert alert-warning text-center mt-4">
+            This form has no fields yet.
+        </div>
+    @endif
+</div>
 @endsection

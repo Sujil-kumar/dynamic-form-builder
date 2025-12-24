@@ -44,9 +44,16 @@
         <div class="mt-3">
             @foreach($forms as $form)
                 <div class="row align-items-center p-3 mb-3 rounded-5 text-center bg-white shadow-sm formList">
-                    <div class="col-6">
+                    <div class="col-3">
                         <h4 class="blueText fw-bold">{{ $form->form_name }}</h4>
                     </div>
+
+                    <div class="col-3 text-end">
+                        <a href="{{route('admin.editForm',$form->id)}}" class="btn btn-sm btn-outline-primary fw-semibold">
+                            <i class="fas fa-edit"></i>edit
+                        </a>
+                    </div>
+
                     <div class="col-3 text-end">
                         <a href="{{route('admin.formResponse',$form->id)}}" class="btn btn-sm btn-primary rounded-pill fw-semibold">
                             <i class="fas fa-eye"></i> View Responses

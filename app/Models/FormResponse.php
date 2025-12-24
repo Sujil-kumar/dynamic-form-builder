@@ -9,7 +9,7 @@ class FormResponse extends Model
 {
     use HasFactory;
 
-    protected $fillable=['form_id','user_id'];
+    protected $fillable=['form_id','user_id','form_version_id'];
 
     public function form(){
         return $this->belongsTo(Form::class);
@@ -22,4 +22,9 @@ class FormResponse extends Model
     public function values(){
         return $this->hasMany(FormResponseValue::class,'response_id');
     }
+
+    public function version(){
+        return $this->belongsTo(FormVersion::class, 'form_version_id');
+    }
+
 }
